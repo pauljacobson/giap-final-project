@@ -1,32 +1,59 @@
 name: giap
 channels:
+  - anaconda
   - conda-forge
   - defaults
 dependencies:
   - attrs=21.4.0=pyhd8ed1ab_0
+  - brotlipy=0.7.0=py310hf8d0d8f_1004
   - bzip2=1.0.8=h3422bc3_4
   - ca-certificates=2022.6.15=h4653dfc_0
+  - certifi=2022.6.15=py310hbe9552e_0
+  - cffi=1.15.0=py310hf10583b_0
+  - charset-normalizer=2.0.12=pyhd8ed1ab_0
+  - cryptography=37.0.1=py310h834c97f_0
+  - freetype=2.11.0=h1192e45_0
+  - giflib=5.2.1=h1a28f6b_0
+  - idna=3.3=pyhd8ed1ab_0
   - iniconfig=1.1.1=pyh9f0ad1d_0
+  - jpeg=9e=h1a28f6b_0
+  - lcms2=2.12=hba8e193_0
+  - libcxx=12.0.0=hf6beb65_1
   - libffi=3.4.2=h3422bc3_5
+  - libpng=1.6.37=hb8d0fd4_0
+  - libtiff=4.2.0=h11e2f9f_0
+  - libwebp=1.2.2=h68602c7_0
+  - libwebp-base=1.2.2=h1a28f6b_0
   - libzlib=1.2.12=ha287fd2_1
+  - lz4-c=1.9.3=hc377ac9_0
   - ncurses=6.3=h07bb92c_1
   - openssl=3.0.4=ha287fd2_0
   - packaging=21.3=pyhd8ed1ab_0
   - pathlib=1.0.1=py_1
+  - pillow=9.0.1=py310h4d1bdd5_0
   - pip=22.1.2=pyhd8ed1ab_0
   - pluggy=1.0.0=py310hbe9552e_3
   - py=1.11.0=pyh6c4a22f_0
+  - pycparser=2.21=pyhd8ed1ab_0
+  - pyopenssl=22.0.0=pyhd8ed1ab_0
   - pyparsing=3.0.9=pyhd8ed1ab_0
+  - pysocks=1.7.1=py310hbe9552e_5
   - pytest=7.1.2=py310hbe9552e_0
   - python=3.10.5=h4eee789_0_cpython
   - python_abi=3.10=2_cp310
   - readline=8.1.2=h46ed386_0
+  - requests=2.28.0=pyhd8ed1ab_0
   - setuptools=62.6.0=py310hbe9552e_0
   - sqlite=3.38.5=h40dfcc0_0
   - tk=8.6.12=he1e0b03_0
   - tomli=2.0.1=pyhd8ed1ab_0
   - tzdata=2022a=h191b570_0
+  - urllib3=1.26.9=pyhd8ed1ab_0
   - wheel=0.37.1=pyhd8ed1ab_0
   - xz=5.2.5=h642e427_1
   - zlib=1.2.12=ha287fd2_1
+  - zstd=1.4.9=h8574219_1
+  - pip:
+    - catalog==0.1.0
+    - e==1.4.5
 prefix: /opt/miniconda3/envs/giap
