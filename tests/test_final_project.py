@@ -2,9 +2,9 @@ import pytest
 
 import json
 
-from changeImage import list_images, reformat_images
-from supplier_image_upload import list_supplier_data, upload_supplier_data
-from run import format_product_descriptions
+from final_project.changeImage import list_images, reformat_images
+from final_project.supplier_image_upload import list_supplier_data, upload_supplier_data
+from final_project.run import format_product_descriptions
 
 
 def test_resize_images():
