@@ -1,7 +1,5 @@
 import pytest
 
-import json
-
 from changeImage import list_images, reformat_images
 from supplier_image_upload import list_supplier_data, upload_supplier_data
 from run import format_product_descriptions
