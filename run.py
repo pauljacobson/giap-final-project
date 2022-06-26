@@ -11,7 +11,8 @@ def format_product_descriptions():
     product_descriptions = {}
     # Specify the product descriptions directory path
     descriptions_path = Path.cwd() / "supplier-data" / "descriptions"
-    # Loop over product descriptions in the product descriptions directory with Path
+    # Loop over product descriptions in the 
+    # product descriptions directory with Path
     for description in descriptions_path.glob("*.txt"):
         with open(description, "r") as desc:
             # Split the product description into parts
