@@ -53,7 +53,4 @@ dependencies:
   - xz=5.2.5=h642e427_1
   - zlib=1.2.12=ha287fd2_1
   - zstd=1.4.9=h8574219_1
-  - pip:
-    - catalog==0.1.0
-    - e==1.4.5
 prefix: /opt/miniconda3/envs/giap
