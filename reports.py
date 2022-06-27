@@ -5,10 +5,10 @@ from reportlab.platypus import Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
 
-def generate_report(paragraph, title, filename):
+def generate_report(attachment, title, paragraph):
     """Generate a PDF report to email"""
     styles = getSampleStyleSheet()
-    report = SimpleDocTemplate(filename)
+    report = SimpleDocTemplate(attachment)
     report_title = Paragraph(title, styles["h1"])
     report_body = Paragraph(paragraph, styles["BodyText"])
     empty_line = Spacer(1, 20)
