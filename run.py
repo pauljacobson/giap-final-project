@@ -31,7 +31,7 @@ def format_product_descriptions():
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
-    json_descriptions = format_product_descriptions()
+    json_descriptions, product_descriptions = format_product_descriptions()
     url = "http://localhost/fruits"
     # Upload the json_descriptions to the web server
     request = requests.post(url, data=json_descriptions)
