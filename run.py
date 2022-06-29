@@ -9,11 +9,15 @@ from pathlib import Path
 def format_product_descriptions():
     """Format product descriptions for the web server as JSON file"""
     product_descriptions = {}
+    product_descriptions_list = []
     # Specify the product descriptions directory path
     descriptions_path = Path.cwd() / "supplier-data" / "descriptions"
     # Loop over product descriptions in the 
     # product descriptions directory with Path
-    for description in descriptions_path.glob("*.txt"):
+    descriptions = descriptions_path.glob("*.txt")
+
+    for description in descriptions:
+        # Read the product description
         with open(description, "r") as desc:
             # Split the product description into parts
             parts = desc.read().split("\n")
@@ -23,11 +27,14 @@ def format_product_descriptions():
             product_descriptions["description"] = parts[2]
             product_descriptions["image"] = description.stem + ".jpeg"
 
+            # Add the product description to the list
+            product_descriptions_list.append(product_descriptions)
+
         # Convert the dictionary to JSON
-        json_product_descriptions = json.dumps(product_descriptions)
+        # json_product_descriptions = json.dumps(product_descriptions)
 
-        return json_product_descriptions, product_descriptions
-
+        # return json_product_descriptions, product_descriptions
+    # print(product_descriptions_list)
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
