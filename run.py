@@ -31,7 +31,7 @@ def format_product_descriptions():
         json.dump(product_descriptions_list, json_fp, indent=2)
 
     # return json_product_descriptions, product_descriptions
-    return json_product_descriptions
+    return json_product_descriptions, product_descriptions
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
