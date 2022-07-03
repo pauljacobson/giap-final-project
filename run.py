@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import os
 import requests
 import json
 from pathlib import Path
@@ -28,13 +27,17 @@ def format_product_descriptions():
 
     # Convert the dictionary to JSON
     json_product_descriptions = json.dumps(product_descriptions_list)
+    with open('json_descriptions.json', 'w') as json_fp:
+        json.dump(product_descriptions_list, json_fp, indent=2)
 
     # return json_product_descriptions, product_descriptions
     return json_product_descriptions
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
-    json_descriptions, product_descriptions = format_product_descriptions()
+    # json_descriptions = format_product_descriptions()
+    # Specify the product descriptions JSON file
+    json_descriptions = Path.cwd() / 'json_descriptions.json'
     url = "http://localhost/fruits"
     # Upload the json_descriptions to the web server
     request = requests.post(url, data=json_descriptions)
@@ -51,7 +54,7 @@ def main():
     # Format product descriptions for the web server as JSON file
     format_product_descriptions()
     # Upload product descriptions to the web server
-    # upload_descriptions()
+    upload_descriptions()
 
 
 if __name__ == "__main__":
