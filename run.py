@@ -21,20 +21,16 @@ def format_product_descriptions():
         with open(description, "r") as desc:
             # Split the product description into parts
             parts = desc.read().split("\n")
-            # Create a dictionary of the product description
-            product_descriptions["name"] = parts[0]
-            product_descriptions["weight"] = parts[1]
-            product_descriptions["description"] = parts[2]
-            product_descriptions["image"] = description.stem + ".jpeg"
-
+            # Compile the product_descriptions dictionary 
+            product_descriptions = {"name": parts[0], "weight": parts[1], "description": parts[2], "image": description.stem + ".jpeg"}
             # Add the product description to the list
             product_descriptions_list.append(product_descriptions)
 
-        # Convert the dictionary to JSON
-        # json_product_descriptions = json.dumps(product_descriptions)
+    # Convert the dictionary to JSON
+    json_product_descriptions = json.dumps(product_descriptions_list)
 
-        # return json_product_descriptions, product_descriptions
-    # print(product_descriptions_list)
+    # return json_product_descriptions, product_descriptions
+    return json_product_descriptions
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
