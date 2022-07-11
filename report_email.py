@@ -11,7 +11,7 @@ def main():
     """Generate an email with the processed report"""
     # Access the product descriptions
     json_product_descriptions, product_descriptions_list = run.format_product_descriptions()
-    # print(type(product_descriptions_list))
+    print(product_descriptions_list[0])
     # Define the report path as /tmp/processed.pdf
     report_file = os.path.join("./processed.pdf")
     # Specify the paragraph format for the product descriptions
