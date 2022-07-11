@@ -10,18 +10,20 @@ from emails import generate_email, send_email
 def main():
     """Generate an email with the processed report"""
     # Access the product descriptions
-    json_product_descriptions, product_descriptions = run.format_product_descriptions()
+    json_product_descriptions, product_descriptions_list = run.format_product_descriptions()
+    # print(type(product_descriptions_list))
     # Define the report path as /tmp/processed.pdf
     report_file = os.path.join("./processed.pdf")
     # Specify the paragraph format for the product descriptions
     title = (f"Processed Update on {format(datetime.datetime.now().strftime('%Y-%m-%d'))}")
+    # Define the format of a paragraph in the report
+    # paragraph = f"name: {json_product_descriptions['name']}\n weight: {json_product_descriptions['weight']}\n"
+    paragraph = []
+    for fruit in product_descriptions_list:
+        # Build a list for the paragraph content
+        paragraph.append(f"name: {fruit['name']}\n weight: {fruit['weight']}\n")
 
-    # Loop over the product_descriptions dictionary
-    for key, value in product_descriptions.items():
-        # Add the product description to the paragraph
-        paragraph = f"name: {product_descriptions['name']}\n weight: {product_descriptions['weight']}\n"
-        
-
+    # Generate the report
     generate_report(report_file, title, paragraph) 
 
 
