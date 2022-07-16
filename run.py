@@ -9,6 +9,7 @@ def format_product_descriptions():
     """Format product descriptions for the web server as JSON file"""
     product_descriptions = {}
     product_descriptions_list = []
+    name_weight_list = []
     # Specify the product descriptions directory path
     descriptions_path = Path.cwd() / "supplier-data" / "descriptions"
     # Loop over product descriptions in the 
@@ -25,13 +26,15 @@ def format_product_descriptions():
             # Add the product description to the list
             product_descriptions_list.append(product_descriptions)
 
+            name_weight_list.append(f'{parts[0]}, {parts[1]}')
+
     # Convert the dictionary to JSON
     json_product_descriptions = json.dumps(product_descriptions_list)
     with open('json_descriptions.json', 'w') as json_fp:
         json.dump(product_descriptions_list, json_fp, indent=2)
 
     # return json_product_descriptions, product_descriptions
-    return json_product_descriptions, product_descriptions_list
+    return json_product_descriptions, product_descriptions_list, name_weight_list
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
@@ -42,7 +45,7 @@ def upload_descriptions():
     request = requests.post(url, data=json_descriptions)
 
     # Check for successful upload
-    if request.status_code == 200:
+    if request.status_code == 200: # Return code may need to be 201
         print("Successfully uploaded product descriptions to the web server")
     else:
         print("Error uploading product descriptions to the web server")
@@ -53,7 +56,7 @@ def main():
     # Format product descriptions for the web server as JSON file
     format_product_descriptions()
     # Upload product descriptions to the web server
-    upload_descriptions()
+    # upload_descriptions()
 
 
 if __name__ == "__main__":
