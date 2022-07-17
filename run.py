@@ -27,15 +27,15 @@ def format_product_descriptions():
             product_descriptions_list.append(product_descriptions)
             
             # Create a list of lists of product names and weights
-            name_weight_list.append(f'{parts[0]}, {parts[1]}')
+            name_weight_list.append(f'{parts[0]}, {parts[1]}'.split(', '))
 
     # Convert the dictionary to JSON
     json_product_descriptions = json.dumps(product_descriptions_list)
     with open('json_descriptions.json', 'w') as json_fp:
         json.dump(product_descriptions_list, json_fp, indent=2)
 
-    # return json_product_descriptions, name_weight_list
-    print(name_weight_list)
+    return json_product_descriptions, name_weight_list
+    # print(name_weight_list)
 
 def upload_descriptions():
     """Upload product descriptions to the web server"""
