@@ -28,7 +28,15 @@ def main():
     # Specify the paragraph format for the product descriptions
     title = (f"Processed Update on {format(datetime.datetime.now().strftime('%Y-%m-%d'))}")
     # Generate the report
-    generate_report(report_file, title, paragraph) 
+    generate_report(report_file, title, paragraph)
+    # Generate the email
+    subject = "Upload Completed - Online Fruit Store"
+    sender = "automation@example.com"
+    receiver = "{}@example.com".format(os.environ.get('USER'))
+    body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
+    attachment = report_file
+    message = generate_email(sender, receiver, subject, body, attachment)
+    send_email(message)
 
 
 if __name__ == "__main__":
