@@ -37,6 +37,7 @@ def format_product_descriptions():
     return json_product_descriptions, name_weight_list
     # print(name_weight_list)
 
+
 def upload_descriptions():
     """Upload product descriptions to the web server"""
     json_descriptions, product_descriptions = format_product_descriptions()
