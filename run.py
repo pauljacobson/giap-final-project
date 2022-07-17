@@ -57,7 +57,7 @@ def main():
     # Format product descriptions for the web server as JSON file
     format_product_descriptions()
     # Upload product descriptions to the web server
-    # upload_descriptions()
+    upload_descriptions()
 
 
 if __name__ == "__main__":
