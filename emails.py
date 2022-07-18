@@ -20,13 +20,14 @@ def generate_email(sender, recipient, subject, body, attachment_path):
     mime_type, _ = mimetypes.guess_type(attachment_path)
     mime_type, mime_subtype = mime_type.split("/", 1)
 
-    with open(attachment_path, "rb") as ap:
-        message.add_attachment(
-            ap.read(),
-            maintype=mime_type,
-            subtype=mime_subtype,
-            filename=attachment_filename,
-        )
+    # Check if there is an attachment
+    if attachment_path is not None:
+        # If there is an attachment, add it to the email
+        with open(attachment_path, "rb") as ap:
+            message.add_attachment(ap.read(),
+                                   maintype=mime_type,
+                                   subtype=mime_subtype,
+                                   filename=attachment_filename)
 
     return message
 
