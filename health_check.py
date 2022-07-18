@@ -3,6 +3,7 @@
 import os
 import shutil
 import socket
+import time
 
 import psutil
 
@@ -23,8 +24,8 @@ def check_available_space():
     disk_usage = shutil.disk_usage("/")
     free_space = disk_usage.free / disk_usage.total * 100
     if free_space < 20:
-        return False
-    return True
+        return True
+    return False
 
 
 def check_available_memory():
@@ -32,8 +33,8 @@ def check_available_memory():
     is less than 500MB"""
     free_memory = psutil.virtual_memory().available / 2**20
     if free_memory < 500:
-        return False
-    return True
+        return True
+    return False
 
 
 def check_network_connection():
@@ -51,4 +52,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    """Run the main function every 60 seconds"""
+    while True:
+        main()
+        time.sleep(60)
