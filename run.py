@@ -22,7 +22,7 @@ def format_product_descriptions():
             # Split the product description into parts
             parts = desc.read().split("\n")
             # Compile the product_descriptions dictionary 
-            product_descriptions = {"name": parts[0], "weight": parts[1], "description": parts[2], "image": description.stem + ".jpeg"}
+            product_descriptions = {"name": parts[0], "weight": int(parts[1][0:3]), "description": parts[2], "image": description.stem + ".jpeg"}
             # Add the product description to the list
             product_descriptions_list.append(product_descriptions)
             
@@ -30,36 +30,24 @@ def format_product_descriptions():
             name_weight_list.append(f'{parts[0]}, {parts[1]}'.split(', '))
 
     # Convert the dictionary to JSON
-    json_product_descriptions = json.dumps(product_descriptions_list)
+    # json_product_descriptions = json.dumps(product_descriptions_list)
     with open('json_descriptions.json', 'w') as json_fp:
         json.dump(product_descriptions_list, json_fp, indent=2)
+        
+    # Iterate over items in the product_descriptions_list and 
+    # post to http://34.172.81.176/fruits using requests
+    for product in product_descriptions_list:
+        # Post the product description to the web server
+        response = requests.post(
+            "http://34.172.81.176/fruits/",
+            json=product,
+        )
+        # Check the response status code
+        assert response.status_code == 201
+      
 
-    return json_product_descriptions, name_weight_list
-    # print(name_weight_list)
-
-
-def upload_descriptions():
-    """Upload product descriptions to the web server"""
-    json_descriptions, product_descriptions = format_product_descriptions()
-    # Specify the product descriptions JSON file
-    url = "http://localhost/fruits"
-    # Upload the json_descriptions to the web server
-    request = requests.post(url, data=json_descriptions)
-
-    # Check for successful upload
-    if request.status_code == 200: # Return code may need to be 201
-        print("Successfully uploaded product descriptions to the web server")
-    else:
-        print("Error uploading product descriptions to the web server")
-
-
-def main():
-    """Run the main program"""
-    # Format product descriptions for the web server as JSON file
-    format_product_descriptions()
-    # Upload product descriptions to the web server
-    upload_descriptions()
+    return name_weight_list
 
 
 if __name__ == "__main__":
-    main()
+    format_product_descriptions()
