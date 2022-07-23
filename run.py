@@ -22,7 +22,7 @@ def format_product_descriptions():
             # Split the product description into parts
             parts = desc.read().split("\n")
             # Compile the product_descriptions dictionary 
-            product_descriptions = {"name": parts[0], "weight": int(parts[1][0:3]), "description": parts[2], "image": description.stem + ".jpeg"}
+            product_descriptions = {"name": parts[0], "weight": int(parts[1][0:3]), "description": parts[2], "image_name": description.stem + ".jpeg"}
             # Add the product description to the list
             product_descriptions_list.append(product_descriptions)
             

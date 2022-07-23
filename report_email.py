@@ -18,7 +18,7 @@ def process_data(data):
 def main():
     """Generate an email with the processed report"""
     # Import the source data to convert into a report
-    json_product_descriptions, name_weight_list = run.format_product_descriptions()
+    name_weight_list = run.format_product_descriptions()
     # Generate summary data from a sorted list of items
     summary = process_data(sorted(name_weight_list))
     # Create a paragraph variable for the report
