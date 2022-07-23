@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+"""
+This script has a couple of issues affecting email delivery
+in the production platform
+"""
+
 import shutil
 import socket
 import time
