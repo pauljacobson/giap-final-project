@@ -11,7 +11,7 @@ import time
 
 import psutil
 
-from emails import generate_email, send_email
+from emails import generate_error_report, send_email
 
 
 def check_cpu_usage():
@@ -54,26 +54,25 @@ def main():
     """Run system checks and email report"""
     body = 'Please check your system and resolve the issue as soon as possible.'
     # Set attachment_path to None
-    attachment_path = None
     # Check CPU usage
     if check_cpu_usage() is True:
         subject = "Error - CPU usage is over 80%"
-        send_email(generate_email("automation@example.com", "username@example.com", subject, body, attachment_path))
+        send_email(generate_error_report("automation@example.com", "username@example.com", subject, body))
 
     # Check available space
     if check_available_space() is True:
         subject = "Error - Available disk space is less than 20%"
-        send_email(generate_email("automation@example.com", "username@example.com", subject, body, attachment_path))
+        send_email(generate_error_report("automation@example.com", "username@example.com", subject, body))
 
     # Check available memory
     if check_available_memory() is True:
         subject = "Error - Available memory is less than 500MB"
-        send_email(generate_email("automation@example.com", "username@example.com", subject, body, attachment_path))
+        send_email(generate_error_report("automation@example.com", "username@example.com", subject, body))
 
     # Check network connection
     if check_network_connection() is False:
         subject = "Error - localhost cannot be resolved to 127.0.0.1"
-        send_email(generate_email("automation@example.com", "username@example.com", subject, body, attachment_path))
+        send_email(generate_error_report("automation@example.com", "username@example.com", subject, body))
 
 
 if __name__ == "__main__":
